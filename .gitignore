@@ -1,0 +1,22 @@
+# Environment variables and secrets
+.env
+.env.*
+*.env
+
+# Python environments
+venv/
+env/
+.venv/
+
+# Cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Any random temporary files we created
+test_run.py

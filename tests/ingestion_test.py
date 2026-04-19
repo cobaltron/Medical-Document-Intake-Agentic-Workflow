@@ -1,0 +1,35 @@
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from dotenv import load_dotenv
+load_dotenv()
+
+from agno.agent import Agent
+from agno.models.google import Gemini
+from agno.media import Image                  # ← import Image from agno
+from agents.ingestion_agent import ingestion_agent
+from pathlib import Path
+
+def load_image(path: str) -> Image:
+    with open(path, "rb") as f:
+        image_bytes = f.read()                # ← read as raw bytes, not base64
+    return Image(content=image_bytes)         # ← wrap in agno Image object
+
+def test_ingestion(image_path: str):
+    print(f"\n--- Testing Ingestion Agent ---")
+    print(f"Document: {image_path}\n")
+
+    image = load_image(image_path)
+
+    response = ingestion_agent.run(
+        "What type of medical document is this?",
+        images=[image]                        # ← pass Image object directly
+    )
+
+    result = response.content
+
+    print(f"Document Type : {result.doc_type}")
+    print(f"Confidence    : {result.confidence}")
+    print(f"Notes         : {result.notes}")
+
+if __name__ == "__main__":
+    test_ingestion("../sample_data/images.png")
