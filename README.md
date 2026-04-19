@@ -1,5 +1,7 @@
 # Medical Document Intake Workflow
 
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/deploy?repository=cobaltron/Medical-Document-Intake-Agentic-Workflow&branch=main&mainModule=app.py)
+
 An intelligent, multi-agent AI pipeline for processing, extracting, and normalizing medical documents such as insurance cards, lab reports, and other medical records.
 
 Built with **Streamlit** for a seamless user interface and orchestrated via the **Agno** agentic framework.
